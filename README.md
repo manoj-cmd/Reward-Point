@@ -1,70 +1,115 @@
-# Getting Started with Create React App
+# React Rewards Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A clean and modular React.js application that calculates customer reward points from transactions and displays them in three distinct tables: User Monthly Rewards, Total Rewards, and Transactions.
 
-## Available Scripts
+## 🚀 Project Overview
 
-In the project directory, you can run:
+This application simulates a reward points program for customers based on their purchase history. The system displays:
+- **User Monthly Rewards** by month/year.
+- **Total Rewards** per customer.
+- **Transaction History** with product details.
 
-### `npm start`
+The rewards logic is based on:
+- $1 spent over $50 earns 1 point.
+- $1 spent over $100 earns 2 points (in addition to the 1 point per $1 over $50).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 📅 **3-Month Data View**: Displays transactions across 3 consecutive months.
+- 🧮 **Pure Calculation Logic**: All reward calculations are done via pure functions.
+- 📊 **Clean Data Tables**: Modular tables showing detailed and summarized information.
+- 🔄 **Dynamic Loading States**: Shown based on actual API responses.
+- 💥 **Error Handling**: Graceful fallback when errors occur.
+- ✅ **PropTypes Validation**: All props are validated using PropTypes.
+- 📦 **Test Coverage**: Includes unit tests using Jest and React Testing Library.
+- 🌍 **Localized Dates**: Purchase dates are rendered in readable local format.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📁 Directory Structure
 
-### `npm run build`
+src/ ├── api/ │ └── fetchData.js # Simulated async API call ├── components/ │ ├── MonthlyRewardsTable/ │ ├── TotalRewardsTable/ │ └── TransactionsTable/ ├── data/ │ └── mockTransactions.js # Sample transaction data ├── utils/ │ └── rewardUtils.js # Pure functions for reward calculation ├── App.js # Main application component ├── index.js # React entry point ├── App.test.js # Unit tests └── styles/ └── Table.css # Basic table styling
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## ⚙️ Setup & Installation
 
-### `npm run eject`
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/rewards-dashboard.git
+   cd rewards-dashboard
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Install dependencies
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+npm install
+Run the development server
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+npm start
+Visit http://localhost:3000 in your browser.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+🧠 Approach and Design Decisions
+Pure Functions: All reward logic is handled via pure, testable functions in utils/rewardUtils.js.
 
-## Learn More
+Modular Components: Each table is its own component for maintainability.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+No Redux/TypeScript: As per requirements, plain React state was used.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Date Sorting & Grouping: Transactions are sorted during render, not stored pre-sorted.
 
-### Code Splitting
+🧪 Testing
+Jest and React Testing Library are used to test:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Reward calculation functions
 
-### Analyzing the Bundle Size
+Component rendering
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Edge cases and UI behavior
 
-### Making a Progressive Web App
+To run tests:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+npm test
+🧮 Reward Logic
+js
+// $120 -> (2 * 20) + (1 * 50) = 90 points
+// $70  -> (1 * 20) = 20 points
 
-### Advanced Configuration
+Handles:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Fractional prices: $100.4 earns 50 points.
+Multiple years/months.
+Aggregation across months/years.
 
-### Deployment
+🖼️ Screenshots
+✅ User Monthly Rewards Table
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+🧾 Transaction History
 
-### `npm run build` fails to minify
+🧮 Total Rewards Table
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+⏳ Loading State
+
+⚠️ Error State
+
+Screenshots are stored in the public/screenshots/ folder.
+
+💡 Tips for Further Development
+Use real APIs in place of mockTransactions.js.
+
+Add filters (by customer/date range).
+
+Implement pagination for large datasets.
+
+📜 License
+MIT License — feel free to use, modify, and distribute.
+
+🤝 Contributing
+Fork the repo
+
+Create a new branch (git checkout -b feature/fooBar)
+
+Commit your changes (git commit -am 'Add some fooBar')
+
+Push to the branch (git push origin feature/fooBar)
+
+Open a Pull Request
