@@ -37,9 +37,9 @@ src/ ├── api/ │ └── fetchData.js # Simulated async API call ├─
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/rewards-dashboard.git
-   cd rewards-dashboard
-
+   git clone https://github.com/manoj-cmd/Reward-Point
+   cd Reward-Point
+   
 Install dependencies
 
 npm install
